@@ -1,0 +1,119 @@
+{
+    "name": "code-itop-tools",
+    "displayName": "VSCode iTop Tools",
+    "description": "VSCode tools for Combodo iTop",
+    "version": "0.1.0",
+    "publisher": "scheiblingco",
+    "icon": "images/icon128.png",
+    "engines": {
+        "vscode": "^1.70.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/scheiblingco/code-itop-tools"
+    },
+    "bugs": {
+        "url": "https://github.com/scheiblingco/code-itop-tools/issues"
+    },
+    "categories": [
+        "Snippets",
+        "Other"
+    ],
+    "activationEvents": [
+        "onStartupFinished",
+        "code-itop-tools.getURLFromConfigFile",
+        "code-itop-tools.checkDatamodel",
+        "code-itop-tools.applyCodeChanges",
+        "code-itop-tools.applyAllChanges"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "configuration": {
+            "type": "object",
+            "title": "iTop Tools Configuration",
+            "properties": {
+                "code-itop-tools.itop-url": {
+                    "type": "string",
+                    "default": "http://localhost/itop",
+                    "description": "Base URL for iTop",
+                    "scope": "window"
+                },
+                "code-itop-tools.toolkit-path": {
+                    "type": "string",
+                    "default": "toolkit",
+                    "description": "The path on the server where the iTop toolkit is installed",
+                    "scope": "window"
+                },
+                "code-itop-tools.timeout": {
+                    "type": "number",
+                    "default": 30000,
+                    "description": "HTTP timeout in ms",
+                    "scope": "window"
+                },
+                "code-itop-tools.symlinks": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "symlinks enabled (useful when working with plugin development)",
+                    "scope": "window"
+                },
+                "code-itop-tools.ignore-certificate-errors": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Ignore certificate validation errors",
+                    "scope": "window"
+                }
+            }
+        },
+        "snippets": [
+            {
+                "language": "xml",
+                "path": "./snippets/snippets.code-snippets"
+            }
+        ],
+        "commands": [
+            {
+                "command": "code-itop-tools.getURLFromConfigFile",
+                "title": "iTop: Get iTop URL from configuration file (config-itop.php)"
+            },
+            {
+                "command": "code-itop-tools.checkDatamodel",
+                "title": "iTop: Check the iTop datamodel"
+            },
+            {
+                "command": "code-itop-tools.applyCodeChanges",
+                "title": "iTop: Apply all code changes"
+            },
+            {
+                "command": "code-itop-tools.applyAllChanges",
+                "title": "iTop: Apply all database and code changes"
+            }
+        ]
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -w -p ./",
+        "lint": "eslint src --ext ts",
+        "pretest": "npm run compile && npm run lint",
+        "test": "node ./out/test/runTest.js"
+    },
+    "devDependencies": {
+        "@types/glob": "^8.0.0",
+        "@types/mocha": "^10.0.0",
+        "@types/node": "16.x",
+        "@types/node-fetch": "^2.5.12",
+        "@types/vscode": "^1.70.0",
+        "@typescript-eslint/eslint-plugin": "^5.38.1",
+        "@typescript-eslint/parser": "^5.38.1",
+        "@vscode/test-electron": "^2.1.5",
+        "eslint": "^8.24.0",
+        "glob": "^8.0.3",
+        "mocha": "^10.0.0",
+        "typescript": "^4.8.4",
+        "vsce": "^2.11.0"
+    },
+    "dependencies": {
+        "file-exists": "^5.0.1",
+        "node-fetch": "2.6.7"
+    }
+}

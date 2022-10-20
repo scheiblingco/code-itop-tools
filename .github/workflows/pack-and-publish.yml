@@ -1,0 +1,28 @@
+name: Publish Extension
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout code"
+        uses: actions/checkout@v2
+      - name: "Install Node.JS"
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18.0.0
+      - name: "Run CI"
+        run: npm ci
+      - name: "Publish to VS Marketplace"
+        uses: HaaLeo/publish-vscode-extension@v1
+        with: 
+          pat: ${{ secrets.VSM_PAT }}
+          registryUrl: https://marketplace.visualstudio.com
+        # Continue to publish to OVSX even if MS Publishing fails
+        continue-on-error: True
+      - name: "Publish to OpenVSX"
+        uses: HaaLeo/publish-vscode-extension@v1
+        with: 
+          pat: ${{ secrets.OVSX_PAT }}
