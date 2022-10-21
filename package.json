@@ -16,6 +16,7 @@
         "url": "https://github.com/scheiblingco/code-itop-tools/issues"
     },
     "categories": [
+        "Extension Packs",
         "Snippets",
         "Other"
     ],
@@ -27,6 +28,12 @@
         "code-itop-tools.applyAllChanges"
     ],
     "main": "./out/extension.js",
+    "extensionPack": [
+        "redhat.vscode-xml",
+        "DotJoshJohnson.xml",
+        "bmewburn.vscode-intelephense-client",
+        "PrateekMahendrakar.prettyxml"
+    ],
     "contributes": {
         "configuration": {
             "type": "object",

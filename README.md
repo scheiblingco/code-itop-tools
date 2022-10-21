@@ -53,6 +53,13 @@ TODO
 ## Release Notes
 Release information
 
+### 0.2.0
+- Added extensions needed/recommended for iTop development
+  - redhat.vscode-xml: XML Tools for datamodel changes
+  - DotJoshJohnson.xml: XML Formatting, XQuery and XPath Tools
+  - bmewburn.vscode-intelephense-client: Intellisense/Intelephense client for PHP Development
+  - PrateekMahendrakar.prettyxml: XML Formatting tools
+
 ### 0.1.1
 - Added question to disable certificate validation for self-signed certificates when configuring URL from config file (in addition to setting)
 
