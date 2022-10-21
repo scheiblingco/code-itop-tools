@@ -75,7 +75,52 @@ export async function askSetConfigSetting() {
             PLUGIN_CFG.update('itop-url', iurl, true);
             PLUGIN_CFG = vscode.workspace.getConfiguration(PREFIX.slice(0, -1));
             
-            vscode.window.showInformationMessage("iTop URL " + iurl + " successfully configured");
+            // Validate URL
+            var opts = {
+                hostname: iurl.replace('https://', '').replace('http://', '').slice(0, -1),
+                port: 443,
+                path: '/'+PLUGIN_CFG.get('toolkit-path')+'/index.php',
+                method: "GET",
+                rejectUnauthorized: true,
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                timeout: PLUGIN_CFG.get('timeout', 30000)
+            }
+            vscode.window.showInformationMessage("iTop URL " + iurl + " successfully configured, validating...");
+
+            var req = https.request(opts, function (res) {
+                res.on('data', function(d) {
+                    vscode.window.showInformationMessage("iTop URL successfully validated!");
+                    log(data2String(d));
+                    return;
+                });
+            });
+
+            req.on('error', function (e) {
+                if (e.message.includes('self signed certificate')) {
+                    vscode.window.showQuickPick(['Yes', 'No'], {
+                        placeHolder: 'The certificate for the URL is not trusted/is self-signed, do you want to ignore SSL errors?',
+                    }).then((answer) => {
+                        if (answer == 'Yes') {
+                            PLUGIN_CFG.update('ignore-ssl-errors', true, true);
+                            vscode.window.showInformationMessage("iTop URL successfully validated!");
+                            log("Successfully disabled certificate validation for iTop requests")
+                            return;
+                        }
+                        else {
+                            log("Error validating URL: " + e.message, "ERROR");
+                            vscode.window.showWarningMessage("URL set, but iTop URL validation failed! (" + e.message + ")");
+                        }
+                    });
+                }
+                else {
+                    log("Error validating URL: " + e.message, "ERROR");
+                    vscode.window.showWarningMessage("URL set, but iTop URL validation failed! (" + e.message + ")");
+                }
+            });
+
+            
         }
     }
 

@@ -53,6 +53,9 @@ TODO
 ## Release Notes
 Release information
 
+### 0.1.1
+- Added question to disable certificate validation for self-signed certificates when configuring URL from config file (in addition to setting)
+
 ### 0.1.0
 Initial release
 
