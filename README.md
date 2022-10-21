@@ -8,6 +8,13 @@ Available at scheiblingco/code-itop-tools on VSCode Marketplace and OpenVSX.
 Install the package, press F1 or Ctrl + Shift + P and type iTop to see the commands. Before using the commands, you need to set an iTop URL in the settings (code-itop-tools.itop-url) or via the config file parser (code-itop-tools.getURLFromConfigFile).
 Once done, you can use the commands below. The snippets are available from activation.
 
+## Extensions
+The following extensions are installed together with this package
+* redhat.vscode-xml: XML Tools for datamodel changes
+* DotJoshJohnson.xml: XML Formatting, XQuery and XPath Tools
+* bmewburn.vscode-intelephense-client: Intellisense/Intelephense client for PHP Development
+* PrateekMahendrakar.prettyxml: XML Formatting tools
+
 ## Settings
 The following settings are available to customize the plugin behaviour:
 * `code-itop-tools.ignore-certificate-errors`: Ignore self-signed and invalid certificates when making requests
