@@ -60,8 +60,11 @@ TODO
 ## Release Notes
 Release information
 
+### 0.2.1
+  - Added AttributeInteger and AttributeDecimal fields to snippets
+
 ### 0.2.0
-- Added extensions needed/recommended for iTop development
+  - Added extensions needed/recommended for iTop development
   - redhat.vscode-xml: XML Tools for datamodel changes
   - DotJoshJohnson.xml: XML Formatting, XQuery and XPath Tools
   - bmewburn.vscode-intelephense-client: Intellisense/Intelephense client for PHP Development

@@ -201,5 +201,31 @@
 			"    <is_null_allowed>false</is_null_allowed>",
 			"</field>"
 		]
-	}
+	},
+	"iTop Integer Field": {
+		"scope": "xml",
+		"prefix": "intfield",
+		"body": [
+			"<field id=\"$1\" xsi:type=\"AttributeInteger\">",
+			"    <sql>$1</sql>",
+			"    <default_value>0</default_value>",
+			"    <is_null_allowed>false</is_null_allowed>",
+			"    <always_load_in_tables>false</always_load_in_tables>",
+			"</field>"
+		]
+	},
+	"iTop Decimal Field": {
+		"scope": "xml",
+		"prefix": "decimalfield",
+		"body": [
+			"<field id=\"$1\" xsi:type=\"AttributeDecimal\">",
+			"    <sql>$1</sql>",
+			"    <default_value>0.00</default_value>",
+			"    <digits>$2</digits>",
+			"    <decimals>$3</decimals>",
+			"    <is_null_allowed>false</is_null_allowed>",
+			"    <always_load_in_tables>false</always_load_in_tables>",
+			"</field>"
+		]
+	},
 }

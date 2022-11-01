@@ -2,7 +2,7 @@
     "name": "code-itop-tools",
     "displayName": "VSCode iTop Tools",
     "description": "VSCode tools for Combodo iTop",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "publisher": "scheiblingco",
     "icon": "images/icon128.png",
     "engines": {
